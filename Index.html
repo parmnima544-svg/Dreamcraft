@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DreamCraft</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit',sans-serif}
+body{background:#08080a;color:#fff;min-height:100vh}
+.bg{position:fixed;inset:0;background:radial-gradient(circle at 20% 20%, #8b5cf6 0%, transparent 40%), radial-gradient(circle at 80% 80%, #ec4899 0%, transparent 40%);filter:blur(70px);opacity:0.35;z-index:-1}
+.wrap{max-width:520px;margin:0 auto;padding:24px}
+h1{font-size:46px;font-weight:900;text-align:center;margin-top:36px;background:linear-gradient(90deg,#a78bfa,#ec4899,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{text-align:center;opacity:0.6;margin-top:6px}
+.card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(20px);border-radius:24px;padding:18px;margin-top:28px}
+input{width:100%;padding:18px;background:#111;border:1px solid #222;border-radius:14px;color:#fff;font-size:16px;outline:none}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag{background:#1c1c20;border:1px solid #2a2a2e;padding:8px 12px;border-radius:20px;font-size:13px}
+.btn{width:100%;margin-top:14px;padding:18px;border:none;border-radius:14px;background:linear-gradient(90deg,#8b5cf6,#ec4899);color:#fff;font-weight:800;font-size:18px}
+#out{margin-top:24px}
+#out img{width:100%;border-radius:20px;margin-top:14px}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="wrap">
+<h1>DreamCraft</h1>
+<p class="sub">Jo Sochega, Wo Banega ✨</p>
+<div class="card">
+<input id="p" placeholder="Kya banana hai? ex: cyberpunk cat">
+<div class="tags">
+<span class="tag" onclick="p.value='cyberpunk cat with neon glasses';go()">😺 Cat</span>
+<span class="tag" onclick="p.value='indian girl anime style saree';go()">👩 Anime</span>
+<span class="tag" onclick="p.value='futuristic shiva temple in space';go()">🛕 Mandir</span>
+<span class="tag" onclick="p.value='luxury villa in mountains sunset';go()">🏔️ Villa</span>
+</div>
+<button class="btn" onclick="go()">✨ Generate Magic</button>
+</div>
+<div id="out"></div>
+</div>
+<script>
+function go(){
+let v=document.getElementById('p').value;
+if(!v)return alert('Kuch likh to!');
+let o=document.getElementById('out');
+o.innerHTML='<p style="text-align:center;opacity:.7;margin-top:20px">Jadu chal raha hai... ⏳</p>';
+let u='https://image.pollinations.ai/prompt/'+encodeURIComponent(v+', ultra detailed, 8k, cinematic')+'?nologo=true&seed='+Math.floor(Math.random()*99999);
+let im=new Image();
+im.onload=()=>{o.innerHTML='<img src="'+u+'"><button class="btn" onclick="window.open(\''+u+'\')">Download</button>';};
+im.src=u;
+}
+</script>
+</body>
+</html>
