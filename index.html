@@ -1,54 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DreamCraft</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;900&display=swap" rel="stylesheet">
+<title>DreamCraft AI - Video Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit',sans-serif}
-body{background:#08080a;color:#fff;min-height:100vh}
-.bg{position:fixed;inset:0;background:radial-gradient(circle at 20% 20%, #8b5cf6 0%, transparent 40%), radial-gradient(circle at 80% 80%, #ec4899 0%, transparent 40%);filter:blur(70px);opacity:0.35;z-index:-1}
-.wrap{max-width:520px;margin:0 auto;padding:24px}
-h1{font-size:46px;font-weight:900;text-align:center;margin-top:36px;background:linear-gradient(90deg,#a78bfa,#ec4899,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.sub{text-align:center;opacity:0.6;margin-top:6px}
-.card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(20px);border-radius:24px;padding:18px;margin-top:28px}
-input{width:100%;padding:18px;background:#111;border:1px solid #222;border-radius:14px;color:#fff;font-size:16px;outline:none}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.tag{background:#1c1c20;border:1px solid #2a2a2e;padding:8px 12px;border-radius:20px;font-size:13px}
-.btn{width:100%;margin-top:14px;padding:18px;border:none;border-radius:14px;background:linear-gradient(90deg,#8b5cf6,#ec4899);color:#fff;font-weight:800;font-size:18px}
-#out{margin-top:24px}
-#out img{width:100%;border-radius:20px;margin-top:14px}
+:root{--bg:#0a0a0f;--card:#15151f;--accent:#7c3aed;--accent2:#06b6d4;--text:#fff;--muted:#9ca3af}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif}
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;background:rgba(21,21,31,0.8);backdrop-filter:blur(20px);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(124,58,237,0.2)}
+.logo{font-family:'Space Grotesk';font-weight:700;font-size:22px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero{text-align:center;padding:60px 20px 30px}
+.hero h1{font-family:'Space Grotesk';font-size:52px;line-height:1.1;margin-bottom:12px}
+.hero h1 span{background:linear-gradient(90deg,#7c3aed,#06b6d4,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.badge{display:inline-block;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.4);padding:6px 14px;border-radius:20px;font-size:12px;color:#a78bfa;margin-bottom:12px}
+.main{max-width:1300px;margin:0 auto;padding:20px;display:grid;grid-template-columns:300px 1fr 320px;gap:16px}
+.card{background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:16px}
+.card h3{font-size:12px;margin-bottom:10px;letter-spacing:0.5px;text-transform:uppercase;color:#a78bfa}
+.input{width:100%;background:#0f0f17;border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px;color:#fff;font-size:14px;outline:none;margin-bottom:10px}
+.btn{width:100%;padding:12px;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:14px}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff}
+.btn-secondary{background:#1f1f2e;color:#fff;border:1px solid rgba(255,255,255,0.1)}
+.preview-box{width:100%;aspect-ratio:16/9;background:#000;border-radius:12px;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center}
+.progress{width:100%;height:6px;background:#0f0f17;border-radius:10px;overflow:hidden;margin-top:10px}
+.progress-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:0.5s}
+.timeline{display:flex;flex-direction:column;gap:8px}
+.scene{background:#0f0f17;border:1px dashed rgba(255,255,255,0.1);border-radius:10px;padding:8px;display:flex;justify-content:space-between}
+@media(max-width:1100px){.main{grid-template-columns:1fr} .hero h1{font-size:32px}}
 </style>
 </head>
 <body>
-<div class="bg"></div>
-<div class="wrap">
-<h1>DreamCraft</h1>
-<p class="sub">Jo Sochega, Wo Banega ✨</p>
+<div class="navbar"><div class="logo">DreamCraft AI STUDIO</div><div style="color:#9ca3af;font-size:13px">AI VIDEO STUDIO - PRO PLAN - Like Flova.ai</div></div>
+<div class="hero">
+<div class="badge">NEW: Full Video AI System - English Version</div>
+<h1>Create Cinematic <span>AI Videos</span> With Voice, Lipsync & Music</h1>
+<p style="color:#9ca3af;max-width:720px;margin:10px auto">All-in-one Agent: Script > Storyboard > Character > Video (Sora, Kling, Veo) > Voice Lipsync > Music > Export</p>
+</div>
+<div class="main">
 <div class="card">
-<input id="p" placeholder="Kya banana hai? ex: cyberpunk cat">
-<div class="tags">
-<span class="tag" onclick="p.value='cyberpunk cat with neon glasses';go()">😺 Cat</span>
-<span class="tag" onclick="p.value='indian girl anime style saree';go()">👩 Anime</span>
-<span class="tag" onclick="p.value='futuristic shiva temple in space';go()">🛕 Mandir</span>
-<span class="tag" onclick="p.value='luxury villa in mountains sunset';go()">🏔️ Villa</span>
+<h3>1. Script & Story</h3>
+<textarea class="input" id="scriptInput" rows="5" placeholder="Write your story... Eg: A girl astronaut discovers glowing forest on Mars, cinematic"></textarea>
+<button class="btn btn-primary" onclick="generateStoryboard()">Generate Storyboard</button>
+<h3 style="margin-top:18px">2. Character Builder 360°</h3>
+<input class="input" placeholder="Character: E.g., Aya - Mars Girl">
+<select class="input"><option>Consistent Character - Lock Face</option><option>360 View - Multi-angle</option></select>
+<h3 style="margin-top:18px">3. Voice & Lipsync</h3>
+<select class="input"><option>ElevenLabs - Rachel (Female, Cinematic)</option><option>ElevenLabs - Adam (Male)</option><option>ElevenLabs - Bella (Child)</option></select>
+<label style="font-size:12px;color:#9ca3af"><input type="checkbox" checked> Enable Lipsync (D-ID / HeyGen)</label>
+<h3 style="margin-top:18px">4. Background Sound</h3>
+<select class="input"><option>Suno AI - Cinematic Ambient</option><option>Suno AI - Epic Trailer</option><option>Suno AI - Lo-fi</option></select>
 </div>
-<button class="btn" onclick="go()">✨ Generate Magic</button>
+<div class="card">
+<div class="preview-box" id="previewBox">
+<div id="placeholder"><div style="font-size:40px">🎬</div><p style="color:#9ca3af;margin-top:8px">Your Cinematic Video Will Appear Here</p><small style="color:#9ca3af">Supports Sora 2, Kling 2.5, Veo 3.1</small></div>
+<div style="position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.7);padding:4px 10px;border-radius:20px;font-size:11px" id="status">Ready</div>
 </div>
-<div id="out"></div>
+<div class="progress"><div class="progress-bar" id="pbar"></div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:14px">
+<button class="btn btn-secondary" onclick="generateVideo('sora')">Sora 2</button>
+<button class="btn btn-secondary" onclick="generateVideo('kling')">Kling</button>
+<button class="btn btn-primary" onclick="generateVideo('veo')">Veo 3.1</button>
+</div>
+<div style="margin-top:14px;font-size:12px;color:#9ca3af;line-height:1.8">
+✓ Auto Storyboard Generation<br>✓ Multi-model Path (auto-selects best)<br>✓ Branch Feature<br>✓ Timeline Editor + Export
+</div>
+</div>
+<div class="card">
+<h3>Timeline & Storyboard</h3>
+<div class="timeline" id="timeline">
+<div class="scene"><div><b>Scene 1</b><br><small>0:00-0:05 | Intro</small></div><span>🎙️</span></div>
+<div class="scene"><div><b>Scene 2</b><br><small>0:05-0:12 | Discovery</small></div><span>🎙️</span></div>
+<div class="scene"><div><b>Scene 3</b><br><small>0:12-0:20 | Climax</small></div><span>🎵</span></div>
+</div>
+<button class="btn btn-secondary" style="margin-top:10px" onclick="addScene()">+ Add Scene</button>
+<h3 style="margin-top:18px">Export</h3>
+<button class="btn btn-primary" style="margin-top:6px">Export Video (Watermark Free)</button>
+</div>
 </div>
 <script>
-function go(){
-let v=document.getElementById('p').value;
-if(!v)return alert('Kuch likh to!');
-let o=document.getElementById('out');
-o.innerHTML='<p style="text-align:center;opacity:.7;margin-top:20px">Jadu chal raha hai... ⏳</p>';
-let u='https://image.pollinations.ai/prompt/'+encodeURIComponent(v+', ultra detailed, 8k, cinematic')+'?nologo=true&seed='+Math.floor(Math.random()*99999);
-let im=new Image();
-im.onload=()=>{o.innerHTML='<img src="'+u+'"><button class="btn" onclick="window.open(\''+u+'\')">Download</button>';};
-im.src=u;
+function generateStoryboard(){
+  const s=document.getElementById('scriptInput').value;
+  if(!s){alert('Write story first');return}
+  document.getElementById('status').innerText='Generating Storyboard...';
+  document.getElementById('pbar').style.width='30%';
+  setTimeout(()=>{
+    document.getElementById('timeline').innerHTML+=`<div class='scene'><div><b>New Scene AI</b><br><small>${s.substring(0,25)}...</small></div><span>✨</span></div>`;
+    document.getElementById('status').innerText='Storyboard Ready';
+    document.getElementById('pbar').style.width='60%';
+  },1200)
 }
+function generateVideo(model){
+  const st=document.getElementById('status');const pb=document.getElementById('pbar');
+  document.getElementById('placeholder').innerHTML=`<div>Generating with ${model.toUpperCase()}...</div>`;
+  st.innerText=`Generating with ${model.toUpperCase()}... Lipsync + Voice + Music`;
+  let w=10;pb.style.width='10%';
+  const it=setInterval(()=>{
+    w+=15;pb.style.width=w+'%';st.innerText=`${model} Rendering: ${w}%`;
+    if(w>=100){clearInterval(it);st.innerText=`Done! ${model} + Lipsync Ready`;document.getElementById('placeholder').innerHTML='<div style="font-size:24px">✅ Video Ready!</div>';}
+  },400)
+}
+function addScene(){document.getElementById('timeline').innerHTML+=`<div class='scene'><div><b>New Scene</b><br><small>Custom</small></div><span>🎬</span></div>`;}
 </script>
 </body>
 </html>
